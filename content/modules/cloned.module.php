@@ -459,13 +459,6 @@ class cloned_images extends cloned_plugin
             $image = new SimpleImage();
             $image -> loadFromString($response, $type);
             
-            $copyImage = clone $image;
-            
-            if ($this->imageClonedExists($copyImage)) {
-                $this->results[] = array('data' => $src, 'status' => 'failed', 'code' => 'This image already is in database.');
-                return False;
-            }
-            
             if ($this->specialized['cropBottom'] > 0)
                 $image -> cropBottom(intval($this->specialized['cropBottom']));
             
@@ -476,6 +469,13 @@ class cloned_images extends cloned_plugin
                     $image = $imageResized;
                     unset($imageResized);
                 }
+            }
+            
+            $copyImage = clone $image;
+            
+            if ($this->imageClonedExists($copyImage)) {
+                $this->results[] = array('data' => $src, 'status' => 'failed', 'code' => 'This image already is in database.');
+                return False;
             }
             
             $width = $image->getWidth();
