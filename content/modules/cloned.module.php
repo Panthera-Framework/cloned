@@ -11,7 +11,8 @@
 if (!defined('IN_PANTHERA'))
     exit;
   
-global $panthera;
+$panthera = pantheraCore::getInstance();
+
 require_once PANTHERA_DIR. '/share/phpQuery.php';
 $panthera -> importModule('simpleimage');
 $panthera -> importModule('httplib');
@@ -35,7 +36,7 @@ class clonedItem extends pantheraFetchDB
     
     public static function createClonedItem($hash)
     {
-        global $panthera;
+        $panthera = pantheraCore::getInstance();
     
         if (strlen($hash) < 20)
             return False;

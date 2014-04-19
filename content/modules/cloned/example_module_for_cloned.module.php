@@ -11,7 +11,7 @@
 if (!defined('IN_PANTHERA'))
     exit;
 
-global $panthera;
+$panthera = pantheraCore::getInstance();
 
 /**
   * Example specified code
@@ -46,8 +46,8 @@ class example_module_for_cloned extends cloned_images
     
     public function getOptions()
     {
-        // if you want to do something other way for domain `example_module_for_cloned`, please change bool value of function
-        return array('parse' => False, 'createImage' => False, 'getImages' => False, 'cropBottom' => 20);
+        // if you want to do something in other way for domain `example_module_for_cloned`, please change bool value of function
+        return array('parse' => False, 'createImage' => False, 'getImages' => False, 'cropBottom' => 20); // cropBottom in px
     }
     
     /**
@@ -62,6 +62,6 @@ class example_module_for_cloned extends cloned_images
         return True;
     }
     
-    // It all goes for other bools values... Enjoy!
+    // It all goes for other bool values... Enjoy!
 }
 ?>
